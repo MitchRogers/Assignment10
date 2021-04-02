@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Contact List";
+}
+
+@model ContactListViewModel
+
+@if (Model.TeamName is null)
+{
+    <h1>Bowlers Contact List</h1>
+}
+else
+{
+    <h1>@Model.TeamName</h1>
+}
+
+<table class="table table-striped table-bordered table-hover">
+    <thead class="font-weight-bold">
+        <tr>
+            <th>First Name</th>
+            <th>Middle Initial</th>
+            <th>Last Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone Number</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.Bowlers)
+        {
+            <tr>
+                <td>@x.BowlerFirstName</td>
+                <td>@x.BowlerMiddleInit</td>
+                <td>@x.BowlerLastName</td>
+                <td>@x.BowlerAddress</td>
+                <td>@x.BowlerCity</td>
+                <td>@x.BowlerState</td>
+                <td>@x.BowlerZip</td>
+                <td>@x.BowlerPhoneNumber</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div page-info="@Model.PageNumberingInfo" page-url-teamName="@Model.TeamName">
+
+</div>
