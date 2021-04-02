@@ -27,6 +27,7 @@ namespace Assignment10
         {
             services.AddControllersWithViews();
 
+            // add service to configure sqlite db that we connected
             services.AddDbContext<BowlingLeagueContext>(options =>
                options.UseSqlite(Configuration["ConnectionStrings:BowlingLeagueDbConnection"])
            );
@@ -54,6 +55,7 @@ namespace Assignment10
 
             app.UseEndpoints(endpoints =>
             {
+                //create endpoints for url style purposes and make it easier to search and filter via url
                 endpoints.MapControllerRoute("teamNamepagenum",
                     "Team/{team}/{teamName}/{pageNum}",
                     new { Controller = "Home", Action = "ContactList", pageNum = 1 }

@@ -4,6 +4,7 @@
 
 @model ContactListViewModel
 
+@*If statement to display All bowlers header or the selected team name*@
 @if (Model.TeamName is null)
 {
     <h1>Bowlers Contact List</h1>
@@ -27,6 +28,7 @@ else
         </tr>
     </thead>
     <tbody>
+        @*for loop to iterate through the models Bolwer object and grab data to fill out contact list*@
         @foreach (var x in Model.Bowlers)
         {
             <tr>
@@ -43,6 +45,7 @@ else
     </tbody>
 </table>
 
+@*pagination build dynamically in PageNumberingInfo ViewModel*@
 <div page-info="@Model.PageNumberingInfo" page-url-teamName="@Model.TeamName">
 
 </div>

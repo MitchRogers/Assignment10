@@ -31,6 +31,8 @@ namespace Assignment10.Infrastructure
             IUrlHelper urlHelp = urlInfo.GetUrlHelper(ViewContext);
             TagBuilder finishedTag = new TagBuilder("div");
 
+            //for loop to dynamically build the routes to the specified team name and page
+            // should build dynamically to show only team members of the highlighted team
             for (int i = 1; i <= PageInfo.NumPages; i++)
             {
                 TagBuilder individualTag = new TagBuilder("a");

@@ -16,6 +16,8 @@ namespace Assignment10.Components
         }
         public IViewComponentResult Invoke()
         {
+            //RouteData will grab the value teamName from the button clicked and store it to the SelectedTeam ViewBag
+            //Nullify the ViewBag so it will load and display all bowlers when a specific team isn't specified
             ViewBag.SelectedTeam = RouteData?.Values["teamName"];
 
             return View(_context.Teams

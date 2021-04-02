@@ -4,11 +4,13 @@
 @{
 }
 
+@*set IEnumerable to Teams objects*@
 @model IEnumerable<Teams>
 
 <a asp-controller="Home" asp-action="ContactList" asp-route-team="" class="btn btn-outline-primary">All Bowlers</a>
 <br />
 
+@*for loop iterating through team objects and displaying team names to filter the data*@
 @foreach (var x in Model)
 {
     <a asp-controller="Home" asp-action="ContactList" asp-route-team="@x.TeamId" asp-route-teamName="@x.TeamName"

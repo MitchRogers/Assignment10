@@ -26,12 +26,14 @@ namespace Assignment10.Controllers
         {
             return View();
         }
+        //pass in the team, teamName, and default the pageNum to be on home page (page 0)
         public IActionResult ContactList(long? team, string teamName, int pageNum = 0)
         {
             int bowlersPerPage = 5;
 
             return View(new ContactListViewModel
             {
+                //grab and display data for the bowlers from the selected team
                 Bowlers = (_context.Bowlers
                         .Where(b => b.TeamId == team || team == null)
                         .OrderBy(b => b.BowlerFirstName)
@@ -39,6 +41,7 @@ namespace Assignment10.Controllers
                         .Take(bowlersPerPage)
                         .ToList()),
 
+                //assign page numbering info to the current selected page.
                 PageNumberingInfo = new PageNumberingInfo
                 {
                     NumBowlersPerPage = bowlersPerPage,
@@ -47,6 +50,7 @@ namespace Assignment10.Controllers
                         _context.Bowlers.Where(x => x.TeamId == team).Count())
                 },
 
+                //Create teamName to access in the default.cshtml and paginationTagHelper
                 TeamName = teamName
             });
         }
